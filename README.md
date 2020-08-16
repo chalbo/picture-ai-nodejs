@@ -1,6 +1,6 @@
 # sai-nodejs
 
-人工智能服务nodejs后台，底层服务opencv4，基于sofa+zookeeper+opencv4nodejs框架。web业务层 koa2。
+人工智能服务nodejs后台，基于sofa+zookeeper+opencv4+opencv4nodejs框架。web业务层 koa2。
 
 ##1、 安装java jdk 1.8
 ***
