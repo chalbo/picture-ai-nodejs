@@ -6,6 +6,9 @@
 ***
 ##2、make编译安装opencv4
 
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
+
 ***
 在源码目录中创建一个临时目录，这里会存放一下cmake编译生成的文件
 ```
@@ -15,7 +18,9 @@ mkdir build
 配置
 ```
 cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. #不带模型
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/Users/zhangbo/opencv_contrib-master/modules .. #带模型
+
 ```
 构建安装
 ```

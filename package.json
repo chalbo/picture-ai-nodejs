@@ -1,0 +1,43 @@
+{
+  "name": "frontendbackend",
+  "version": "1.0.0",
+  "description": "超算后台",
+  "bin": "./app/app.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zhangbo",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "elasticsearch": "^15.5.0",
+    "eslint": "^5.16.0",
+    "forever": "^0.15.3",
+    "koa": "^2.13.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.18.1",
+    "pm2": "^4.4.1"
+  },
+  "dependencies": {
+    "app-root-path": "^2.2.1",
+    "axios": "^0.18.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "formidable": "^1.2.2",
+    "koa-body": "^4.2.0",
+    "koa-server-http-proxy": "^0.1.0",
+    "koa-session": "^6.0.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^3.0.6",
+    "moment": "^2.27.0",
+    "node-media-server": "^2.2.2",
+    "redis": "^2.8.0",
+    "sofa-rpc-node": "^2.0.0",
+    "url": "^0.11.0"
+  },
+  "pkg": {
+    "scripts": "./app/**/*.js",
+    "assets": "./static/**/*"
+  }
+}
