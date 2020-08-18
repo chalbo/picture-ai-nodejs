@@ -7,12 +7,9 @@ const path = require("path");
 const classNames = require("./dnnTensorflowObjectDetectionClassNames");
 const { cv, runVideoDetection } = require("./utils");
 
-if (!cv.xmodules.dnn) {
-  throw new Error("exiting: opencv4nodejs compiled without dnn module");
-}
 
 // replace with path where you unzipped detection model
-const detectionModelPath = "../data/dnn/tf-detection";
+const detectionModelPath = "../data/dnn";
 
 const pbFile = path.resolve(detectionModelPath, "frozen_inference_graph.pb");
 const pbtxtFile = path.resolve(

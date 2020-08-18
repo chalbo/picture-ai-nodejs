@@ -2,9 +2,9 @@ const cv = require('opencv4nodejs');
 const fs = require("fs");
 const path = require("path");
 
-if (!cv.xmodules.face) {
-  throw new Error("exiting: opencv4nodejs compiled without face module");
-}
+// if (!cv.xmodules.face) {
+//   throw new Error("exiting: opencv4nodejs compiled without face module");
+// }
 
 const facemarkModelPath = "../data/face/";
 const modelFile = path.resolve(facemarkModelPath, "lbfmodel.yaml");

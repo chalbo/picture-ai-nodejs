@@ -2,12 +2,12 @@ const cv = require('opencv4nodejs');
 const fs = require('fs');
 const path = require('path');
 
-if (!cv.xmodules.dnn) {
-  throw new Error('exiting: opencv4nodejs compiled without dnn module');
-}
+// if (!cv.xmodules.dnn) {
+//   throw new Error('exiting: opencv4nodejs compiled without dnn module');
+// }
 
 // replace with path where you unzipped inception model
-const inceptionModelPath = '../data/dnn/tf-inception';
+const inceptionModelPath = '../data/dnn';
 
 const modelFile = path.resolve(inceptionModelPath, 'tensorflow_inception_graph.pb');
 const classNamesFile = path.resolve(inceptionModelPath, 'imagenet_comp_graph_label_strings.txt');

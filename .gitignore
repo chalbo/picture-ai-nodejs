@@ -2,4 +2,6 @@
 **/node_modules
 /bin
 /static
+/logs
+/bulid
 /service/openCv/data
