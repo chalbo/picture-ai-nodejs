@@ -1,6 +1,6 @@
 {
   "name": "AIstruct",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "人工智能服务",
   "bin": "./app/app.js",
   "main": "app.js",

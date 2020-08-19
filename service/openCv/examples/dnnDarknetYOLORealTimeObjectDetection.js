@@ -6,9 +6,6 @@ const fs = require("fs");
 const path = require("path");
 const { cv, runVideoDetection } = require("./utils");
 
-if (!cv.xmodules.dnn) {
-  throw new Error("exiting: opencv4nodejs compiled without dnn module");
-}
 
 // replace with path where you unzipped darknet model
 const darknetPath = "../data/dnn/yolo-object-detection";
