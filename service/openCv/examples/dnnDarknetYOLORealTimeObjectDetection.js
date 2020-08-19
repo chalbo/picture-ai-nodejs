@@ -8,7 +8,7 @@ const { cv, runVideoDetection } = require("./utils");
 
 
 // replace with path where you unzipped darknet model
-const darknetPath = "../data/dnn/yolo-object-detection";
+const darknetPath = "../data/dnn/cfg";
 
 const cfgFile = path.resolve(darknetPath, "yolov3-tiny.cfg");
 const weightsFile = path.resolve(darknetPath, "yolov3-tiny.weights");

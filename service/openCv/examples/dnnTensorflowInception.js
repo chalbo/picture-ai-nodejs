@@ -23,6 +23,7 @@ const classNames = fs.readFileSync(classNamesFile).toString().split('\n');
 // initialize tensorflow inception model from modelFile
 const net = cv.readNetFromTensorflow(modelFile);
 
+
 const classifyImg = (img) => {
   // inception model works with 224 x 224 images, so we resize
   // our input images and pad the image with white pixels to
