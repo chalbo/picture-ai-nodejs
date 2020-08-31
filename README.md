@@ -32,6 +32,7 @@ sudo make install
 ### linux and osx:
 ```
 export OPENCV4NODEJS_DISABLE_AUTOBUILD=1
+npm install --save opencv4nodejs
 
 ```
 ##3、安装zookeeper
