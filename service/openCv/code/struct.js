@@ -8,7 +8,7 @@ const loadModel = () => {
   const cfgFile = path.join(__dirname, darknetPath + "Project_Obj365_test.cfg");
   const weightsFile = path.join(__dirname, darknetPath + "Project_Obj365_170000.weights");
   const labelsFile = path.join(__dirname, darknetPath + "Project_Obj365.names");
-  const img = cv.imread(path.join(__dirname, "/../data/struct/images/555.jpeg"));
+  const img = cv.imread(path.join(__dirname, "/../data/struct/images/444.jpeg"));
 
   if (
     !fs.existsSync(weightsFile) ||
