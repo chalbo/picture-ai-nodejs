@@ -1,40 +1,38 @@
 const fs = require("fs");
 const path = require("path");
 const cv = require('opencv4nodejs');
+const logger = require('../../../common/logger');
 
+class DarkNet {
+  constructor(options) {
+    const { cfgFile, weightsFile, labelsFile, minConfidence, nmsThreshold } = options;
+    if (!fs.existsSync(weightsFile) ||
+      !fs.existsSync(cfgFile) ||
+      !fs.existsSync(labelsFile)) {
+      logger.error('Invalid darkNet configuration file');
+      console.log("could not find darknet model");
 
-const loadModel = () => {
-  const darknetPath = "/../data/struct/Flag_Recon/";
-  const cfgFile = path.join(__dirname, darknetPath + "Project_Obj365_test.cfg");
-  const weightsFile = path.join(__dirname, darknetPath + "Project_Obj365_170000.weights");
-  const labelsFile = path.join(__dirname, darknetPath + "Project_Obj365.names");
-  const img = cv.imread(path.join(__dirname, "/../data/struct/images/444.jpeg"));
+    }
+    else {
+      this.options = options;
+      this.labels = fs
+        .readFileSync(labelsFile)
+        .toString()
+        .split("\n");
+      this.net = cv.readNetFromDarknet(cfgFile, weightsFile);
+      this.allLayerNames = this.net.getLayerNames();
+      this.unconnectedOutLayers = this.net.getUnconnectedOutLayers();
+      this.layerNames = this.unconnectedOutLayers.map(layerIndex => {
+        return this.allLayerNames[layerIndex - 1];
+      });
 
-  if (
-    !fs.existsSync(weightsFile) ||
-    !fs.existsSync(cfgFile) ||
-    !fs.existsSync(labelsFile)
-  ) {
-    console.log("could not find darknet model");
-    console.log("download the model from: https://pjreddie.com/darknet/yolo/");
-    throw new Error("exiting");
+    }
+
   }
 
-  const labels = fs
-    .readFileSync(labelsFile)
-    .toString()
-    .split("\n");
-  const net = cv.readNetFromDarknet(cfgFile, weightsFile);
-  const allLayerNames = net.getLayerNames();
-  const unconnectedOutLayers = net.getUnconnectedOutLayers();
-  const layerNames = unconnectedOutLayers.map(layerIndex => {
-    return allLayerNames[layerIndex - 1];
-  });
-
-  const minConfidence = 0.5;
-  const nmsThreshold = 0.3;
-
-  const classifyImg = img => {
+  recImage = (img) => {
+    const { net, allLayerNames, unconnectedOutLayers, layerNames } = this;
+    const { minConfidence, nmsThreshold } = this.options;
     // object detection model works with 416 x 416 images
     const size = new cv.Size(416, 416);
     const vec3 = new cv.Vec(0, 0, 0);
@@ -94,7 +92,7 @@ const loadModel = () => {
             // draw the rect for the object
             img.drawRectangle(pt1, pt2, rectColor, rectThickness, rectLineType);
 
-            const text = labels[classIDs[i]];
+            const text = this.labels[classIDs[i]];
             const org = new cv.Point(rect.x, rect.y + 15);
             const fontFace = cv.FONT_HERSHEY_SIMPLEX;
             const fontScale = 0.5;
@@ -107,15 +105,11 @@ const loadModel = () => {
         }
       });
     });
-
-    cv.imshowWait("Darknet YOLO Object Detection", img);
-  };
-
-  classifyImg(img);
-
+    return img;
+    // cv.imshowWait("Darknet YOLO Object Detection", img);
+  }
 }
 
 
 
-
-module.exports = { loadModel };
+module.exports = { DarkNet };
