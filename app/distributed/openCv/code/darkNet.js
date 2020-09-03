@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const cv = require('opencv4nodejs');
+const { cv, runVideoDetection } = require("./utils");
 const logger = require('../../../common/logger');
 
 class DarkNet {
@@ -27,7 +27,14 @@ class DarkNet {
       });
 
     }
-
+  }
+  // 执行视频，缺播放
+  runVideo(url) {
+    //webcamPort 0为本机器
+    if (!url) {
+      url = 0;//本级摄像头
+    }
+    runVideoDetection(url, this.recImage);
   }
 
   recImage = (img) => {
@@ -105,8 +112,8 @@ class DarkNet {
         }
       });
     });
-    return img;
-    // cv.imshowWait("Darknet YOLO Object Detection", img);
+    // return img;
+    cv.imshow("Darknet YOLO Object Detection", img);
   }
 }
 

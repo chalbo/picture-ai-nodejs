@@ -36,6 +36,12 @@ exports.runVideoDetection = (src, detect) => {
   });
 };
 
+exports.runVideoDetectionAndRunRtmp = (src, detect) => {
+  grabFrames(src, 1, frame => {
+    detect(frame);
+  });
+};
+
 exports.drawRectAroundBlobs = (binaryImg, dstImg, minPxSize, fixedRectWidth) => {
   const {
     centroids,
