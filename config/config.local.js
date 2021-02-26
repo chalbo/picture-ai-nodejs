@@ -3,6 +3,7 @@ module.exports = {
   isDebuger: true,
   //esconfig
   esHost: '127.0.0.1:9200',
+  zookeeperHost: '127.0.0.1:2181',
   esBusinessConfig: [
     {
       index: 'attribute',
