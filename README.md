@@ -1,5 +1,5 @@
 # sai-nodejs
-
+基于opencv4nodejs对原来业务做一些外层
 人工智能服务nodejs后台，基于sofa+zookeeper+opencv4+opencv4nodejs框架。web业务层 koa2。
 
 ##1、 安装java jdk 1.8
@@ -40,3 +40,4 @@ npm install --save opencv4nodejs
 ###brew install zookeeper
 
 ##4、进入sainode目录，执行npm -I
+
